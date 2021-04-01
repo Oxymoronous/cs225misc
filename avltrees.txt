@@ -1,0 +1,70 @@
+AVL Trees
+
+1. AVL tree is a special case of BST. AVL tree has the additional property
+that the difference of height between its left subtree and right subtree cannot
+be greater than 1.
+
+Some properties of AVL trees:
+- if there are n nodes in AVL tree, minimum height of floor[log_{2}(n)]
+- if there are n nodes in AVL tree, max height cannot exceed 1.44(log_{2}(n))
+- given height of AVL tree is h, then the tree has max # of nodes to be 2^(h+1) - 1
+- min # of ndoes in a tree with height h follows a recurrence relation:
+    Numofnodes(h) = Numofnodes(h-1) + Numofnodes(h-2) + 1; N(0) = 1, N(1) = 2
+- searching, inserting and deleting are all O(log n)
+- level order traversal for AVL is O(n)
+
+4 different rotations in AVL tree
+
+1. left rotation (LL)
+case:
+        a
+         \
+          b
+           \ 
+            c
+
+after rotating:
+        b
+       / \
+      a   c
+
+2. right rotation (RR)
+case:
+        a
+       /
+      b
+     /
+    c
+
+after rotating:
+        b
+       / \
+      c   a
+
+3. left right rotation (LR) (double left)
+- right rotation on right subtree
+-left rotation on unbalanced root
+
+4. right left rotation (RL) (double right)
+- left rotation on left subtree
+- right rotation on unbalanced root
+
+Pseudocode for determining which rotation to use:
+
+    // if tree is right heavy
+            if right subtree is left heavy  
+                do double left
+            else
+                do single left
+        else if tree is left heavy
+            if left sub tree is right heavy
+                do double right
+            else 
+                do single right
+
+
+//random scribble
+pre order (root left right): 25 15 10 4 12 22 18 24 50 35 31 44 70 66 90  (has a general pattern of slanted L?)
+in order (left root right):  4 10 12 15 18 22 24 25 31 35 44 50 66 70 90  (should give sorted seq)
+post order (left right root): 4 12 10 18 24 22 15 31 44 35 66 90 70 50 25  (just weird)
+    

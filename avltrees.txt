@@ -68,3 +68,33 @@ pre order (root left right): 25 15 10 4 12 22 18 24 50 35 31 44 70 66 90  (has a
 in order (left root right):  4 10 12 15 18 22 24 25 31 35 44 50 66 70 90  (should give sorted seq)
 post order (left right root): 4 12 10 18 24 22 15 31 44 35 66 90 70 50 25  (just weird)
     
+preorder: stack
+    push root
+    while stack not empty
+        pop and print
+        push right
+        push left
+
+postorder: stack 
+    while(root NOT null)
+        (p root's right, p root, root = root->left)
+    pop from stack
+    root = the thing being popped
+    if root has right child (which automatically follows that that right child is on stack top)
+        pop right child
+        push back root
+        root = root->rightchild
+    else    
+        print root
+        root = null
+    go back to while loop while stack is NOT empty 
+
+
+level order: queue
+    0) enqueue root
+    1) deque root
+    2) p root->left, p root->right
+    3) root = queue front
+    4) step 1
+
+inorder: stack
